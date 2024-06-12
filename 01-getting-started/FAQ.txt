@@ -1,0 +1,54 @@
+Can I use Windows to develop iOS apps? (and other FAQs)
+If you have a Mac then feel free to skip this lesson. But just in case you're wondering:
+
+I don’t have a Mac. Can I use my Windows computer?
+
+Short answer: Probably not.
+
+Long answer: Your computer needs to be able to run macOS and Xcode. You have the following options:
+
+1) You can run macOS using tools such as VirtualBox or VMware. This will create a virtual machine that runs macOS, but this will often be quite slow (and very frustrating).
+
+2) Run a Hackintosh. Please refer to this lesson: https://www.udemy.com/course/ios-13-app-development-bootcamp/learn/lecture/16250896
+
+3) Rent a Mac online using a service like macincloud.com or similar.
+
+4) Buy a cheap, second hand Mac from eBay. Just make sure the machine has an SSD or it will be very, very slow (and frustrating).
+
+
+
+Does my Computer meet the requirements to run Xcode?
+
+To take full advantage of this course, your computer needs to run - at a minimum - macOS Catalina 10.15.4 and Xcode 12. Any of these machines will work:
+
+iMac: Late 2012 or newer
+
+Mac Mini: Late 2012 or newer
+
+MacBook: Early 2015 or newer
+
+MacBook Air: Mid-2012 or newer
+
+MacBook Pro: Mid-2012 or newer
+
+
+
+A solid-state drive (SSD) is the single biggest performance improvement you will see on older Macs. You can find the macOS Catalina requirements here:
+
+https://en.wikipedia.org/wiki/MacOS_Catalina#System_requirements
+
+You can find the Xcode 12 requirements here.
+
+https://developer.apple.com/support/xcode
+
+
+
+Do I need an iPhone or iPad?
+
+You don't need an iPhone or iPad. I use the simulator most of the time. The simulator is very versatile and can mimic things like location, orientation changes, and shakes.
+
+
+
+Can I use my iPhone or iPad to make apps?
+
+No. You need macOS and Xcode. Xcode doesn't run on iPhones or iPads.
