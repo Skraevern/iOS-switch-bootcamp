@@ -8,9 +8,9 @@
 
 import UIKit
 
-let diceArray = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
-
 class ViewController: UIViewController {
+    
+    let diceArray = [#imageLiteral(resourceName: "DiceOne"), #imageLiteral(resourceName: "DiceTwo"), #imageLiteral(resourceName: "DiceThree"), #imageLiteral(resourceName: "DiceFour"), #imageLiteral(resourceName: "DiceFive"), #imageLiteral(resourceName: "DiceSix")]
     
     // # 41
     // var leftDiceNum = 0
@@ -35,11 +35,10 @@ class ViewController: UIViewController {
         
         diceImageView1.image = diceArray.randomElement()
         diceImageView2.image = diceArray.randomElement()
-        
-        
     }
     
-    @IBAction func rollButtonPressed(_ sender: UIButton) { //print("Button got tapped.")
+    @IBAction func rollButtonPressed(_ sender: UIButton) { 
+        //print("Button got tapped.")
         //diceImageView1.image = dice4
         //diceImageView2.image = dice4
         
@@ -49,6 +48,8 @@ class ViewController: UIViewController {
         // diceImageView1.image = diceArray[leftDiceNum]
         // diceImageView2.image = diceArray[rightDiceNum]
         
+        //print(Int.random(in: 1...10))
+        //diceImageView1.image = diceArray[Int.random(in: 0...5)]
         
         diceImageView1.image = diceArray.randomElement()
         diceImageView2.image = diceArray.randomElement()
