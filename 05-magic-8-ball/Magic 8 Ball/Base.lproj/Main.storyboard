@@ -35,11 +35,17 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Ask">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="36"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="askButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ubn-y6-K3Q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemTealColor"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="uVs-Es-Pas" id="4u6-fO-2ig"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
