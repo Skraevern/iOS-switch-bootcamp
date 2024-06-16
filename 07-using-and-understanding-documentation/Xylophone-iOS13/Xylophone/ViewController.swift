@@ -33,8 +33,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    @IBAction func keyPressed(_ sender: UIButton) {
-        // C
+    @IBAction func cButton(_ sender: Any) {
         playAudio(note: "C")
     }
     @IBAction func dButton(_ sender: UIButton) {
