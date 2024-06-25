@@ -21,14 +21,7 @@ class ViewController: UIViewController {
 
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle!
-        
-        if hardness == "Soft" {
-            secondsRemaining = eggTimes["Soft"]!
-        } else if hardness == "Medium"{
-            secondsRemaining = eggTimes["Medium"]!
-        } else {
-            secondsRemaining = eggTimes["Hard"]!
-        }
+        secondsRemaining = eggTimes[hardness]!
         
         if timerActive {
             secondsRemaining = 0
