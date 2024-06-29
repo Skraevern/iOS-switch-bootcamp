@@ -15,30 +15,29 @@ class ViewController: UIViewController {
         "Medium": 420, // 7 min == 420
         "Hard": 720, // 12 min == 720
     ]
-    var secondsRemaining: Int? = nil
     var timerActive = false
-    var percentageRemaining: Float? = nil
+    var secondsPast = 0
+    var totalTime = 0
     
     @IBOutlet weak var progressBar: UIProgressView!
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle!
-        secondsRemaining = eggTimes[hardness]!
+        totalTime = eggTimes[hardness]!
         
         if timerActive {
-            secondsRemaining = 0
+            secondsPast = totalTime
         }
         else {
             timerActive = true
 
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-                if self.secondsRemaining! > 0 {
-                    print ("\(String(describing: self.secondsRemaining!)) seconds")
-                    self.secondsRemaining! -= 1
-                    
-                    let percentageRemaining = Float(self.secondsRemaining!) / Float(self.eggTimes[hardness]!)
+                if self.secondsPast <= self.totalTime {
+                    let percentageRemaining = Float(self.secondsPast) / Float(self.eggTimes[hardness]!)
                     print(percentageRemaining)
-                    self.progressBar.progress = 1.000000000000 - percentageRemaining
+                    self.progressBar.progress = percentageRemaining
+                    
+                    self.secondsPast += 1
                     
                 } else {
                     print("Countdown finished")
