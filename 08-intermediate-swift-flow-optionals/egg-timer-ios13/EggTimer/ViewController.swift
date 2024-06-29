@@ -17,8 +17,10 @@ class ViewController: UIViewController {
     ]
     var secondsRemaining: Int? = nil
     var timerActive = false
+    var percentageRemaining: Float? = nil
     
-
+    @IBOutlet weak var progressBar: UIProgressView!
+    
     @IBAction func hardnessSelected(_ sender: UIButton) {
         let hardness = sender.currentTitle!
         secondsRemaining = eggTimes[hardness]!
@@ -33,6 +35,11 @@ class ViewController: UIViewController {
                 if self.secondsRemaining! > 0 {
                     print ("\(String(describing: self.secondsRemaining!)) seconds")
                     self.secondsRemaining! -= 1
+                    
+                    let percentageRemaining = Float(self.secondsRemaining!) / Float(self.eggTimes[hardness]!)
+                    print(percentageRemaining)
+                    self.progressBar.progress = 1.000000000000 - percentageRemaining
+                    
                 } else {
                     print("Countdown finished")
                     self.timerActive = false
