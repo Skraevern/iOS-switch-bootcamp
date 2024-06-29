@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+var player: AVAudioPlayer!
 
 class ViewController: UIViewController {
     
@@ -25,15 +27,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
+        resetTimer()
         hardness = sender.currentTitle!
         totalTime = eggTimes[hardness]!
         secondsRemaining = totalTime
-        
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         updateTitleLabel()
-
     }
-    
     @objc func updateTimer() {
         if self.secondsPast <= self.totalTime {
             let percentageRemaining = Float(self.secondsPast) / Float(self.eggTimes[hardness]!)
@@ -44,20 +44,26 @@ class ViewController: UIViewController {
         } else {
             updateTitleLabel()
             self.timer.invalidate()
+            playAlarm()
         }
-        
     }
     @objc func updateTitleLabel() {
         if self.secondsPast <= self.totalTime {
             let minutes = self.secondsRemaining / 60
             let seconds = self.secondsRemaining % 60
             let timerString = String(format: "%02d:%02d", minutes, seconds)
-            
             titleLabel.text = "\(hardness)\n\n\(timerString)"
-            
-        } else {
-            titleLabel.text = "DONE!"
-        }
-        
+        } else {titleLabel.text = "DONE!"}
+    }
+    @objc func playAlarm() {
+        let url = Bundle.main.url(forResource: "alarm_sound", withExtension: "mp3")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+    }
+    @objc func resetTimer() {
+        timer.invalidate()
+        progressBar.progress = 0.0
+        secondsPast = 0
+        secondsRemaining = 0
     }
 }
