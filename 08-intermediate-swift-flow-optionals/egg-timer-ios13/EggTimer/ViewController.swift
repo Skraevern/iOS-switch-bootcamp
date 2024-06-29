@@ -15,36 +15,49 @@ class ViewController: UIViewController {
         "Medium": 420, // 7 min == 420
         "Hard": 720, // 12 min == 720
     ]
-    var timerActive = false
     var secondsPast = 0
     var totalTime = 0
+    var secondsRemaining = 0
+    var hardness = ""
+    var timer = Timer()
     
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func hardnessSelected(_ sender: UIButton) {
-        let hardness = sender.currentTitle!
+        hardness = sender.currentTitle!
         totalTime = eggTimes[hardness]!
+        secondsRemaining = totalTime
         
-        if timerActive {
-            secondsPast = totalTime
-        }
-        else {
-            timerActive = true
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        updateTitleLabel()
 
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
-                if self.secondsPast <= self.totalTime {
-                    let percentageRemaining = Float(self.secondsPast) / Float(self.eggTimes[hardness]!)
-                    print(percentageRemaining)
-                    self.progressBar.progress = percentageRemaining
-                    
-                    self.secondsPast += 1
-                    
-                } else {
-                    print("Countdown finished")
-                    self.timerActive = false
-                    Timer.invalidate()
-                }
-            }
+    }
+    
+    @objc func updateTimer() {
+        if self.secondsPast <= self.totalTime {
+            let percentageRemaining = Float(self.secondsPast) / Float(self.eggTimes[hardness]!)
+            self.secondsPast += 1
+            self.secondsRemaining -= 1
+            self.progressBar.progress = percentageRemaining
+            updateTitleLabel()
+        } else {
+            updateTitleLabel()
+            self.timer.invalidate()
         }
+        
+    }
+    @objc func updateTitleLabel() {
+        if self.secondsPast <= self.totalTime {
+            let minutes = self.secondsRemaining / 60
+            let seconds = self.secondsRemaining % 60
+            let timerString = String(format: "%02d:%02d", minutes, seconds)
+            
+            titleLabel.text = "\(hardness)\n\n\(timerString)"
+            
+        } else {
+            titleLabel.text = "DONE!"
+        }
+        
     }
 }
