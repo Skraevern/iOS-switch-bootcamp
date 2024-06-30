@@ -37,3 +37,4 @@ myTown.fortify()
 // Defences increased!
 
 myTown.name = "Change"
+// Cannot assign to property: 'name' is a 'let' constant
