@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
     
     var quizBrain = QuizBrain()
 
@@ -32,13 +34,17 @@ class ViewController: UIViewController {
         }
         
         quizBrain.updateQuestion()
+        
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(resetBtnColor), userInfo: nil, repeats: false)
+        
         updateUI()
     }
     
     @objc func updateUI() {
         questionLabel.text = quizBrain.getQuestionText()
         progressBar.progress = quizBrain.getProgress()
+        scoreLabel.text = "Score: \(quizBrain.getScore())"
+        highScoreLabel.text = "High Score: \(quizBrain.getHighScore())"
     }
     
     @objc func resetBtnColor() {
