@@ -27,10 +27,8 @@ struct QuizBrain {
     
     func checkAnswer(_ userAnswer: String) -> Bool {
         if userAnswer == quiz[questionNumber].answer {
-            // User got it right
             return true
         } else {
-            // User got it wrong
             return false
         }
     }
