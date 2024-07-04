@@ -29,7 +29,6 @@ class ViewController: UIViewController {
         Question(q: "Chocolate affects a dog's heart and nervous system; a few ounces are enough to kill a small dog.", a: "True")
 
     ]
-    
     var questionNumber = 0
     
 
@@ -43,9 +42,9 @@ class ViewController: UIViewController {
         let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer {
-            print("Correct")
+            sender.backgroundColor = UIColor.green
         } else {
-            print("Wrong")
+            sender.backgroundColor = UIColor.red
         }
         
         if questionNumber + 1 < quiz.count {
@@ -53,14 +52,20 @@ class ViewController: UIViewController {
         } else {
             questionNumber = 0
         }
-        
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(resetBtnColor), userInfo: nil, repeats: false)
         updateUI()
     }
     
-    func updateUI() {
+    @objc func updateUI() {
         questionLabel.text = quiz[questionNumber].text
         progressBar.progress = Float(questionNumber) / Float(quiz.count)
     }
+    
+    @objc func resetBtnColor() {
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear	
+    }
+
 
 
 }
