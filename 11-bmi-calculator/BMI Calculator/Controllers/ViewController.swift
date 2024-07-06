@@ -32,7 +32,11 @@ class ViewController: UIViewController {
         weightLabel.text = calculator.getWeightString(weightFloat: sender.value)
     }
     @IBAction func calculateBtn(_ sender: UIButton) {
-        print(calculator.calculateBMI(h: heightSlider.value, w: weightSlider.value))
+        
+        let secondVC = SecondViewController()
+        secondVC.bmiValue = calculator.calculateBMI(h: heightSlider.value, w: weightSlider.value)
+        
+        self.present(secondVC, animated: true, completion: nil)
     }
 }
 
