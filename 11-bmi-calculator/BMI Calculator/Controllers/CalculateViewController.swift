@@ -10,7 +10,7 @@ import UIKit
 
 class CalculateViewController: UIViewController {
     
-    var bmi: String?
+    var bmiStr: String?
     
     var calculator = Calculator()
 
@@ -34,14 +34,14 @@ class CalculateViewController: UIViewController {
         weightLabel.text = calculator.getWeightString(weightFloat: sender.value)
     }
     @IBAction func calculateBtn(_ sender: UIButton) {
-        bmi = calculator.calculateBMI(h: heightSlider.value, w: weightSlider.value)
+        bmiStr = calculator.calculateBMI(h: heightSlider.value, w: weightSlider.value)
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
             let destinationVC = segue.destination as! ResultViewController
-            destinationVC.bmiValue = bmi
+            destinationVC.bmiValue = bmiStr
         }
     }
     
