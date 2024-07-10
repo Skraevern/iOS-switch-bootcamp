@@ -9,17 +9,25 @@
 import UIKit
 
 class ResultViewController: UIViewController {
+    
+    var splitPerPerson = ""
+    var tipPrct = ""
+    var splitNumPeople = ""
 
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsLabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        totalLabel.text = splitPerPerson
+        settingsLabel.text = "Split between \(splitNumPeople) people, with \(tipPrct) tip."
 
         // Do any additional setup after loading the view.
     }
     
     @IBAction func recalcBtnPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

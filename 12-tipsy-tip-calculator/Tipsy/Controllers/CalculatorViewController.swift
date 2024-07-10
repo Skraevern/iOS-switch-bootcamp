@@ -21,6 +21,8 @@ class CalculatorViewController: UIViewController {
     var splitNumPeople = 0
     var bill = Float(0.0)
     var tip = NSNumber(0.0)
+    var tipPrcnt = ""
+    var splitPerPerson = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,18 +47,27 @@ class CalculatorViewController: UIViewController {
         updateValues()
         billTextField.endEditing(true)
         
-        let splitPerPerson = tipCalc.calculateSplit(total: bill, tipPrct: tip, numSplit: splitNumPeople)
-        print(splitPerPerson)
+        splitPerPerson = tipCalc.calculateSplit(total: bill, tipPrct: tip, numSplit: splitNumPeople)
+        self.performSegue(withIdentifier: "goToResult", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToResult" {
+            let destinationVC = segue.destination as! ResultViewController
+            destinationVC.splitNumPeople = String(splitNumPeople)
+            destinationVC.tipPrct = tipPrcnt
+            destinationVC.splitPerPerson = splitPerPerson
+        }
     }
     func updateValues() {
         bill = Float(billTextField.text!) ?? 0.0
         splitNumPeople = Int(stepper.value)
         if zeroPctBtn.isSelected == true {
-            tip = tipCalc.getTipDecimal(prctStr: zeroPctBtn.currentTitle!)
+            tipPrcnt = zeroPctBtn.currentTitle!
         } else if tenPctBtn.isSelected == true {
-            tip = tipCalc.getTipDecimal(prctStr: tenPctBtn.currentTitle!)
+            tipPrcnt = tenPctBtn.currentTitle!
         } else {
-            tip = tipCalc.getTipDecimal(prctStr: twentyPctBtn.currentTitle!)
+            tipPrcnt = twentyPctBtn.currentTitle!
         }
+        tip = tipCalc.getTipDecimal(prctStr: tipPrcnt)
     }
 }
