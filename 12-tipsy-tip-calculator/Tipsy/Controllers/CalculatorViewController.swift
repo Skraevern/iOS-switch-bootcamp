@@ -10,35 +10,53 @@ import UIKit
 
 class CalculatorViewController: UIViewController {
     let tipCalc = TipCalculator()
-    var splitNumPeople = ""
     
     @IBOutlet weak var billTextField: UITextField!
     @IBOutlet weak var zeroPctBtn: UIButton!
     @IBOutlet weak var tenPctBtn: UIButton!
     @IBOutlet weak var twentyPctBtn: UIButton!
     @IBOutlet weak var splitNumLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
+    
+    var splitNumPeople = 0
+    var bill = Float(0.0)
+    var tip = NSNumber(0.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
     @IBAction func tipChanged(_ sender: UIButton) {
+        updateValues()
         zeroPctBtn.isSelected = false
         tenPctBtn.isSelected = false
         twentyPctBtn.isSelected = false
         sender.isSelected = true
-        
-        let tip = tipCalc.getTipDecimal(prctStr: sender.currentTitle!)
-        print(tip)
-
-    }
-    @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        splitNumPeople = String(Int(sender.value))
-        splitNumLabel.text = splitNumPeople
-
-    }
-    @IBAction func calculateBtnPressed(_ sender: UIButton) {
-        print(splitNumPeople)
+        billTextField.endEditing(true)
     }
     
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        updateValues()
+        splitNumLabel.text = String(splitNumPeople)
+        billTextField.endEditing(true)
+    }
+    @IBAction func calculateBtnPressed(_ sender: UIButton) {
+        updateValues()
+        billTextField.endEditing(true)
+        
+        let splitPerPerson = tipCalc.calculateSplit(total: bill, tipPrct: tip, numSplit: splitNumPeople)
+        print(splitPerPerson)
+    }
+    func updateValues() {
+        bill = Float(billTextField.text!) ?? 0.0
+        splitNumPeople = Int(stepper.value)
+        if zeroPctBtn.isSelected == true {
+            tip = tipCalc.getTipDecimal(prctStr: zeroPctBtn.currentTitle!)
+        } else if tenPctBtn.isSelected == true {
+            tip = tipCalc.getTipDecimal(prctStr: tenPctBtn.currentTitle!)
+        } else {
+            tip = tipCalc.getTipDecimal(prctStr: twentyPctBtn.currentTitle!)
+        }
+    }
 }

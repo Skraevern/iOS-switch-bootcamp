@@ -15,4 +15,10 @@ struct TipCalculator {
 
         return formatter.number(from: prctStr)!
     }
+    func calculateSplit(total: Float, tipPrct: NSNumber, numSplit: Int) -> String {
+        let tip = total * Float(tipPrct)
+        let sum = total + tip
+        let split = sum / Float(numSplit)
+        return String(format: "%.2f", split)
+    }
 }
