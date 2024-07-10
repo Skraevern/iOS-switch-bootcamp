@@ -27,7 +27,6 @@ class CalculatorViewController: UIViewController {
 
     }
     @IBAction func calculateBtnPressed(_ sender: UIButton) {
-
     }
     
 }
