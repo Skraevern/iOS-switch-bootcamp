@@ -10,9 +10,9 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    var splitPerPerson = ""
-    var tipPrct = ""
-    var splitNumPeople = ""
+    var splitPerPerson: String?
+    var tipPrct: String?
+    var splitNumPeople: String?
 
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var settingsLabel: UILabel!
