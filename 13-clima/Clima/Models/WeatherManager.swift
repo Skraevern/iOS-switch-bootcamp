@@ -9,11 +9,12 @@
 import Foundation
 
 struct WeatherManager {
-    let apiKey = "9a5d14153344cab145464232471199f4"
-    let apiCall = "https://api.openweathermap.org/data/2.5/weather&appid=9a5d14153344cab145464232471199f4&units=metric"
+    let secrets = Secrets()
+    let apiCall = "https://api.openweathermap.org/data/2.5/weather"
 
     func fetchWeather(city: String) -> String{
-        let urlStr = "\(apiCall)?q=\(city)"
+        let apiKey = secrets.getApiKey()
+        let urlStr = "\(apiCall)?&units=metric&q=\(city)&appid=\(apiKey)"
         return urlStr
     }
     
