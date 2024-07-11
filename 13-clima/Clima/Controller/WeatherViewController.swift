@@ -38,7 +38,7 @@ class WeatherViewController: UIViewController, UITextFieldDelegate {
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = searchTextField.text {
-            print(weatherManager.fetchWeather(city: city))
+            weatherManager.fetchWeather(city: city)
         }
         searchTextField.text = ""
         
