@@ -19,8 +19,24 @@ struct Main: Decodable {
 }
 
 struct Weather: Decodable {
+    let id: Int
+    let main: String
     let description: String
 }
+/*
+ From WeatherManager:
+func parseJson(weatherData: Data) {
+    let decoder = JSONDecoder()
+    do {
+        let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+        //print(decodedData.name) // Oslo
+        // print(decodedData.main.temp) // 18.81
+        // print(decodedData.weather[0].description) // clear sky
+        // print(decodedData.weather[0].main) // Clear
+    } catch {
+        print(error)
+    }
+*/
 
 /*
  {
