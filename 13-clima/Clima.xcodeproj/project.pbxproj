@@ -16,9 +16,9 @@
 		ADAA27C6231BC02C00365194 /* light_background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27C4231BC02B00365194 /* light_background.pdf */; };
 		ADAA27C7231BC02C00365194 /* dark_background.pdf in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27C5231BC02B00365194 /* dark_background.pdf */; };
 		ADAA27CE231BC87F00365194 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ADAA27CD231BC87F00365194 /* README.md */; };
+		F9B150FF2C4596B70034839A /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B150FE2C4596B70034839A /* Secrets.swift */; };
 		F9E966FE2C453A5C003E7D95 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E966FD2C453A5C003E7D95 /* WeatherModel.swift */; };
 		F9F615102C3FAC7A0034DC58 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F6150F2C3FAC7A0034DC58 /* WeatherManager.swift */; };
-		F9F615132C3FB2600034DC58 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F615122C3FB2600034DC58 /* Secrets.swift */; };
 		F9F615172C4012950034DC58 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F615162C4012950034DC58 /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,9 +34,9 @@
 		ADAA27C4231BC02B00365194 /* light_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = light_background.pdf; sourceTree = "<group>"; };
 		ADAA27C5231BC02B00365194 /* dark_background.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = dark_background.pdf; sourceTree = "<group>"; };
 		ADAA27CD231BC87F00365194 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F9B150FE2C4596B70034839A /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F9E966FD2C453A5C003E7D95 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		F9F6150F2C3FAC7A0034DC58 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
-		F9F615122C3FB2600034DC58 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		F9F615162C4012950034DC58 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,7 +71,7 @@
 		ADAA27AF231BBFAF00365194 /* Clima */ = {
 			isa = PBXGroup;
 			children = (
-				F9F615112C3FB1550034DC58 /* Secrets */,
+				F9B151002C4596C80034839A /* Secrets */,
 				F9F6150E2C3FAC0F0034DC58 /* Models */,
 				ADAA27B0231BBFAF00365194 /* AppDelegate.swift */,
 				ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */,
@@ -102,6 +102,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F9B151002C4596C80034839A /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				F9B150FE2C4596B70034839A /* Secrets.swift */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
 		F9F6150E2C3FAC0F0034DC58 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,14 +118,6 @@
 				F9E966FD2C453A5C003E7D95 /* WeatherModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F9F615112C3FB1550034DC58 /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				F9F615122C3FB2600034DC58 /* Secrets.swift */,
-			);
-			path = Secrets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,8 +195,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */,
-				F9F615132C3FB2600034DC58 /* Secrets.swift in Sources */,
 				ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */,
+				F9B150FF2C4596B70034839A /* Secrets.swift in Sources */,
 				F9E966FE2C453A5C003E7D95 /* WeatherModel.swift in Sources */,
 				F9F615102C3FAC7A0034DC58 /* WeatherManager.swift in Sources */,
 				F9F615172C4012950034DC58 /* WeatherData.swift in Sources */,
