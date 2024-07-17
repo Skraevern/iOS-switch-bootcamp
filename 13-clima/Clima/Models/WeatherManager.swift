@@ -19,9 +19,12 @@ struct WeatherManager {
     let secrets = Secrets()
     let apiCall = "https://api.openweathermap.org/data/2.5/weather"
     
-    func fetchWeather(city: String) {
-        let apiKey = secrets.getApiKey()
-        let urlStr = "\(apiCall)?&units=metric&q=\(city)&appid=\(apiKey)"
+    func fetchWeatherCity(city: String) {
+        let urlStr = "\(apiCall)?&units=metric&q=\(city)&appid=\(secrets.getApiKey())"
+        performRequest(with: urlStr)
+    }
+    func fetchWeatherGPS(lat: String, long: String) {
+        let urlStr = "\(apiCall)?&units=metric&lat=\(lat)&lon=\(long)&appid=\(secrets.getApiKey())"
         performRequest(with: urlStr)
     }
     
@@ -30,7 +33,6 @@ struct WeatherManager {
         if let url = URL(string: urlString) {
             // 2. Create url session
             let session = URLSession(configuration: .default)
-            
             // 3. Give session a task
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
@@ -50,8 +52,8 @@ struct WeatherManager {
             // 4. Start the task
             task.resume()
         }
-        
     }
+    
     func parseJson(_ weatherData: Data) -> WeatherModel? {
         let decoder = JSONDecoder()
         do {
