@@ -29,6 +29,9 @@ class WeatherViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
+    @IBAction func locationBtnPressed(_ sender: UIButton) {
+        locationManager.requestLocation()
+    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -82,14 +85,13 @@ extension WeatherViewController: WeatherManagerDelegate {
 extension WeatherViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            let lat = String(location.coordinate.latitude)
-            let long = String(location.coordinate.longitude)
-            weatherManager.fetchWeatherGPS(lat: lat, long: long)
+        if let location = locations.last {
+            locationManager.stopUpdatingLocation()
+            let lat = location.coordinate.latitude
+            let lon = location.coordinate.longitude
+            weatherManager.fetchWeatherGPS(lat: lat, lon: lon)
         }
     }
-    
-    
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
