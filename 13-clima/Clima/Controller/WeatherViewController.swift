@@ -88,6 +88,9 @@ extension WeatherViewController: CLLocationManagerDelegate {
             weatherManager.fetchWeatherGPS(lat: lat, long: long)
         }
     }
+    
+    
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
